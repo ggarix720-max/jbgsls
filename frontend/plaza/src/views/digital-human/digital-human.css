@@ -1,0 +1,331 @@
+/* 粮储数字人悬浮助手（亮色主题，自包含样式，不依赖 MUI 主题变量） */
+
+.dh-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1200;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.dh-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+}
+
+.dh-fab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.dh-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 640px;
+  max-height: calc(100vh - 48px);
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.dh-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, #f8fafc, #ffffff);
+}
+
+.dh-header-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dh-header-main strong {
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.dh-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+}
+
+.dh-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+
+.dh-status-ready i,
+.dh-status-speaking i {
+  background: #22c55e;
+}
+
+.dh-status-connecting i {
+  background: #f59e0b;
+}
+
+.dh-status-error i,
+.dh-status-permission-required i {
+  background: #ef4444;
+}
+
+.dh-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dh-icon-button {
+  padding: 4px 8px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dh-icon-button:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  color: #1d4ed8;
+}
+
+.dh-icon-button.is-on {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.dh-stage {
+  position: relative;
+  height: 220px;
+  background: radial-gradient(circle at 50% 30%, #eef2ff, #e2e8f0);
+}
+
+.dh-stage-canvas {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dh-stage-canvas video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dh-stage-mask {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(248, 250, 252, 0.82);
+  color: #475569;
+  font-size: 13px;
+}
+
+.dh-stage-mask p {
+  margin: 0;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.dh-stage-mask button {
+  padding: 6px 14px;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dh-stage-action {
+  border: none;
+  background: rgba(248, 250, 252, 0.9);
+  color: #1d4ed8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dh-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: dh-spin 0.8s linear infinite;
+}
+
+@keyframes dh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dh-profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  background: #f8fafc;
+}
+
+.dh-profile-item {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #eef2ff;
+  color: #334155;
+  font-size: 12px;
+}
+
+.dh-role-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.dh-role-select select {
+  padding: 3px 6px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 6px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12px;
+}
+
+.dh-messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.dh-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dh-row-user {
+  align-items: flex-end;
+}
+
+.dh-row-tag {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.dh-bubble {
+  max-width: 84%;
+  padding: 9px 12px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #1e293b;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.dh-row-user .dh-bubble {
+  border-color: transparent;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.dh-bubble.is-error {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.dh-composer {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  background: #ffffff;
+}
+
+.dh-composer input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 10px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.dh-composer input:focus {
+  border-color: rgba(37, 99, 235, 0.5);
+}
+
+.dh-send {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dh-send:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.dh-send.is-stop {
+  background: #e2e8f0;
+  color: #334155;
+}
