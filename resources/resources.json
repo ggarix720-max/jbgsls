@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-10",
+  "resources": [
+    {
+      "id": "res-001",
+      "title": "低温储粮技术视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=低温储粮技术",
+      "tags": ["低温储粮"],
+      "summary": "低温储粮原理、谷冷机使用与粮库实践相关视频集合，按播放量挑选即可。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-002",
+      "title": "国家粮食和物资储备局 · 科技储粮栏目",
+      "type": "article",
+      "url": "https://www.lswz.gov.cn",
+      "tags": ["低温储粮", "绿色储粮"],
+      "summary": "官网科技与安全仓储栏目，发布低温储粮、绿色储粮的政策导向与技术动态。",
+      "source": "国家粮食和物资储备局",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-003",
+      "title": "中国大学MOOC · 粮食储藏相关课程检索",
+      "type": "video",
+      "url": "https://www.icourse163.org/search.htm?search=粮食储藏",
+      "tags": ["气调储藏", "低温储粮"],
+      "summary": "高校粮食储藏、储藏物昆虫学等慕课检索入口，可免费旁听完整课程。",
+      "source": "中国大学MOOC",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-004",
+      "title": "中国知网 · 气调储藏研究文献检索",
+      "type": "article",
+      "url": "https://www.cnki.net",
+      "tags": ["气调储藏"],
+      "summary": "检索「气调储藏」「充氮储粮」关键词，获取二氧化碳/氮气气调的最新研究论文。",
+      "source": "中国知网",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-005",
+      "title": "磷化氢熏蒸作业视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=磷化氢熏蒸",
+      "tags": ["熏蒸杀虫", "安全管理"],
+      "summary": "磷化氢熏蒸操作流程、安全防护与残留处理相关视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-006",
+      "title": "农业农村部 · 农药与熏蒸剂管理政策",
+      "type": "article",
+      "url": "http://www.moa.gov.cn",
+      "tags": ["熏蒸杀虫"],
+      "summary": "查询磷化铝、磷化氢等熏蒸剂的登记管理与使用规范的最新政策。",
+      "source": "农业农村部",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-007",
+      "title": "粮食霉变识别与防治视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=粮食霉变防治",
+      "tags": ["霉变防治"],
+      "summary": "储粮霉变早期识别、发热霉变处置与预防措施相关视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-008",
+      "title": "国家哲学社会科学文献中心 · 储粮霉变文献",
+      "type": "ebook",
+      "url": "https://www.ncpssd.cn",
+      "tags": ["霉变防治", "品质检验"],
+      "summary": "免费检索下载储粮微生物、霉菌毒素检测等方向的论文与研究报告。",
+      "source": "国家哲学社会科学文献中心",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-009",
+      "title": "粮食干燥与降水技术视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=粮食干燥技术",
+      "tags": ["水分控制"],
+      "summary": "烘干塔选型、降水幅度控制与干燥品质保持相关视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-010",
+      "title": "中国知网 · 储粮水分控制文献检索",
+      "type": "article",
+      "url": "https://www.cnki.net",
+      "tags": ["水分控制", "通风与粮温"],
+      "summary": "检索「储粮水分」「安全水分」关键词，了解不同粮种安全储藏水分标准研究。",
+      "source": "中国知网",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-011",
+      "title": "粮库机械通风技术视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=粮库机械通风",
+      "tags": ["通风与粮温"],
+      "summary": "机械通风时机判断、风道设计与粮温均衡操作相关视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-012",
+      "title": "国家图书馆 OPAC · 粮食通风与储藏书目",
+      "type": "ebook",
+      "url": "http://opac.nlc.cn",
+      "tags": ["通风与粮温"],
+      "summary": "检索《粮油储藏学》《粮食通风技术》等教材专著的馆藏与电子化获取方式。",
+      "source": "国家图书馆",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-013",
+      "title": "浅圆仓/平房仓结构与仓储设施视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=浅圆仓+平房仓",
+      "tags": ["仓房与设施"],
+      "summary": "仓型结构对比、气密性改造与配套设施讲解相关视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-014",
+      "title": "国家粮食和物资储备局 · 仓储设施建设政策",
+      "type": "article",
+      "url": "https://www.lswz.gov.cn",
+      "tags": ["仓房与设施", "绿色储粮"],
+      "summary": "粮食仓储设施建设规划、高标准粮仓改造相关政策与新闻。",
+      "source": "国家粮食和物资储备局",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-015",
+      "title": "中国大学MOOC · 粮油品质检验课程检索",
+      "type": "video",
+      "url": "https://www.icourse163.org/search.htm?search=粮油检验",
+      "tags": ["品质检验"],
+      "summary": "粮油感官检验、理化指标测定等检验类慕课检索入口。",
+      "source": "中国大学MOOC",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-016",
+      "title": "国家标准全文公开系统 · 粮油检验方法标准",
+      "type": "ebook",
+      "url": "https://openstd.samr.gov.cn",
+      "tags": ["品质检验", "标准与规程"],
+      "summary": "免费在线阅读 GB 系列粮油检验方法国家标准全文（如容重、水分、杂质测定）。",
+      "source": "国家标准全文公开系统",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-017",
+      "title": "绿色储粮技术视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=绿色储粮技术",
+      "tags": ["绿色储粮"],
+      "summary": "控温、气调、生物防治等绿色储粮技术路线讲解视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-018",
+      "title": "知乎 · 绿色储粮与智能粮库话题讨论",
+      "type": "article",
+      "url": "https://www.zhihu.com/search?type=content&q=绿色储粮",
+      "tags": ["绿色储粮", "仓房与设施"],
+      "summary": "从业者视角的绿色储粮落地经验与智能粮库建设讨论串。",
+      "source": "知乎",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-019",
+      "title": "粮库智能化出入库作业视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=粮库智能化出入库",
+      "tags": ["出入库管理"],
+      "summary": "一卡通出入库、自动扦样与无人值守计量等智能化作业视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-020",
+      "title": "知乎 · 粮库出入库管理流程经验帖",
+      "type": "article",
+      "url": "https://www.zhihu.com/search?type=content&q=粮库出入库管理",
+      "tags": ["出入库管理", "安全管理"],
+      "summary": "粮库出入库流程、损耗控制与台账管理的一线经验讨论。",
+      "source": "知乎",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-021",
+      "title": "应急管理部 · 有限空间作业安全规定",
+      "type": "article",
+      "url": "https://www.mem.gov.cn",
+      "tags": ["安全管理"],
+      "summary": "粮库熏蒸、仓内作业属于有限空间作业，查询最新安全监管规定与事故警示。",
+      "source": "应急管理部",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-022",
+      "title": "粮库安全生产与事故警示视频合集（B站检索）",
+      "type": "video",
+      "url": "https://search.bilibili.com/all?keyword=粮库安全生产",
+      "tags": ["安全管理", "熏蒸杀虫"],
+      "summary": "粮库触电、粉尘爆炸、熏蒸中毒等事故的警示教育视频集合。",
+      "source": "哔哩哔哩",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-023",
+      "title": "国家标准全文公开系统 · 粮油储藏技术标准",
+      "type": "ebook",
+      "url": "https://openstd.samr.gov.cn",
+      "tags": ["标准与规程"],
+      "summary": "在线阅读《粮油储藏技术规范》等 GB/T 标准全文，是课程与实操的权威依据。",
+      "source": "国家标准全文公开系统",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "id": "res-024",
+      "title": "全国标准信息公共服务平台 · 粮食行业标准检索",
+      "type": "article",
+      "url": "https://std.samr.gov.cn",
+      "tags": ["标准与规程", "品质检验"],
+      "summary": "检索 LS 粮食行业标准与地方标准的现行有效版本与制修订动态。",
+      "source": "全国标准信息公共服务平台",
+      "addedAt": "2026-09-10"
+    }
+  ]
+}

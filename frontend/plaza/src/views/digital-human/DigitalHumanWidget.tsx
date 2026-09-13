@@ -51,12 +51,19 @@ const statusLabels: Record<string, string> = {
 }
 
 const DigitalHumanWidget = () => {
-  const [isClosed, setIsClosed] = useState(false)
+  const [isClosed, setIsClosed] = useState(() => {
+    if (typeof window === 'undefined') return true
+
+    return window.localStorage.getItem(AVATAR_CLOSED_KEY) !== '0'
+  })
+
   const [enabled, setEnabled] = useState(true)
   const [speakEnabled, setSpeakEnabled] = useState(true)
+
   const [messages, setMessages] = useState<Line[]>([
     { id: 'greeting', role: 'assistant', content: AVATAR_GREETING }
   ])
+
   const [input, setInput] = useState('')
   const [streaming, setStreaming] = useState(false)
   const [profile, setProfile] = useState<GrainUserProfile>(createEmptyProfile)
@@ -83,7 +90,6 @@ const DigitalHumanWidget = () => {
       setProfile(stored)
     }
 
-    setIsClosed(window.sessionStorage.getItem(AVATAR_CLOSED_KEY) === '1')
     setEnabled(window.localStorage.getItem(AVATAR_ENABLED_KEY) !== '0')
   }, [])
 
@@ -108,12 +114,12 @@ const DigitalHumanWidget = () => {
 
   const closePanel = () => {
     setIsClosed(true)
-    window.sessionStorage.setItem(AVATAR_CLOSED_KEY, '1')
+    window.localStorage.setItem(AVATAR_CLOSED_KEY, '1')
   }
 
   const openPanel = () => {
     setIsClosed(false)
-    window.sessionStorage.setItem(AVATAR_CLOSED_KEY, '0')
+    window.localStorage.setItem(AVATAR_CLOSED_KEY, '0')
   }
 
   const changeRole = (role: UserRole) => {

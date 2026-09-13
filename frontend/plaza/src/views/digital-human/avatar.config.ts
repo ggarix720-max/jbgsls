@@ -18,21 +18,29 @@
 
 export const AVATAR_CONFIG = {
   /** 服务 ID */
-  sceneId: process.env.NEXT_PUBLIC_XF_AVATAR_SCENE_ID || '351408151951708160',
+  sceneId: process.env.NEXT_PUBLIC_XF_AVATAR_SCENE_ID || '356356451834400768',
+
   /** APPID */
-  appId: process.env.NEXT_PUBLIC_XF_AVATAR_APP_ID || '5cd77191',
+  appId: process.env.NEXT_PUBLIC_XF_AVATAR_APP_ID || 'f5d7b8f7',
+
   /** APIKey */
-  apiKey: process.env.NEXT_PUBLIC_XF_AVATAR_API_KEY || 'f0df1caccf6d0fd4b9d7fe3c6cd8b605',
+  apiKey: process.env.NEXT_PUBLIC_XF_AVATAR_API_KEY || 'fd9cf69e48d14ae73c7d14ef9ef1a30d',
+
   /** APISecret */
-  apiSecret: process.env.NEXT_PUBLIC_XF_AVATAR_API_SECRET || 'YjgyYWI2ZjliZGRkMzU0YzY3ZDQ3YTEw',
+  apiSecret: process.env.NEXT_PUBLIC_XF_AVATAR_API_SECRET || 'MWRjZWFmNDMxMmQ4ZDQxNzYxYTQ3NzQ0',
+
   /** WebSocket 网关（华东一区） */
   serverUrl: process.env.NEXT_PUBLIC_XF_AVATAR_SERVER_URL || 'wss://avatar.cn-huadong-1.xf-yun.com/v1/interact',
+
   /** 数字人形象 ID */
-  avatarId: process.env.NEXT_PUBLIC_XF_AVATAR_ID || '201365001',
+  avatarId: process.env.NEXT_PUBLIC_XF_AVATAR_ID || '111204004',
+
   /** 音色 */
-  vcn: process.env.NEXT_PUBLIC_XF_AVATAR_VCN || 'x4_yiting',
-  /** 推流协议：xrtc | webrtc */
-  protocol: process.env.NEXT_PUBLIC_XF_AVATAR_PROTOCOL || 'xrtc',
+  vcn: process.env.NEXT_PUBLIC_XF_AVATAR_VCN || 'x4_yezi',
+
+  /** 推流协议：xrtc | webrtc（xrtc 播放器在生产构建压缩后会损坏，默认用 webrtc） */
+  protocol: (process.env.NEXT_PUBLIC_XF_AVATAR_PROTOCOL || 'webrtc') as 'xrtc' | 'webrtc' | 'rtmp',
+
   /** 画面尺寸 */
   width: 480,
   height: 854
@@ -44,14 +52,19 @@ export type AvatarLlmChannel = 'knowledge' | 'assistant'
 export const AVATAR_LLM_CONFIG = {
   /** 通道选择，可用 NEXT_PUBLIC_XF_AVATAR_LLM_CHANNEL 覆盖 */
   channel: (process.env.NEXT_PUBLIC_XF_AVATAR_LLM_CHANNEL || 'knowledge') as AvatarLlmChannel,
+
   /** 知识库链路（讯飞 MaaS + ChatDoc 检索） */
   knowledgeEndpoint: '/api/backend/chat',
+
   /** 星火助手链路 */
   assistantEndpoint: '/api/backend/assistant-chat',
+
   /** 星火助手 ID（channel=assistant 时必填，对应 configs/agents 里的 assistantId） */
   assistantId: process.env.NEXT_PUBLIC_XF_ASSISTANT_ID || '',
+
   /** 单次播报的最大字数（超出截断，避免数字人念太久） */
   maxSpeakChars: 220,
+
   /** 携带的历史轮数 */
   historyTurns: 6
 } as const
@@ -59,7 +72,7 @@ export const AVATAR_LLM_CONFIG = {
 /** 数字人总开关（localStorage） */
 export const AVATAR_ENABLED_KEY = 'grain.avatar-enabled.v1'
 
-/** 面板收起状态（sessionStorage，标签页级） */
+/** 面板收起状态（localStorage，跨会话记住；默认收起，用户打开过后保持展开） */
 export const AVATAR_CLOSED_KEY = 'grain.avatar-closed.v1'
 
 /** 首次进入时的问候语 */

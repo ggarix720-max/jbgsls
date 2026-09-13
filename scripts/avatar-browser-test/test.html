@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>avatar sdk browser test</title>
+<style>body{margin:0;background:#222}#wrapper{width:480px;height:854px;background:#000;position:relative}</style>
+</head>
+<body>
+<div id="wrapper"></div>
+<script type="module">
+// 协议通过 ?protocol=xrtc|webrtc 传入，默认 xrtc
+const protocol = new URLSearchParams(location.search).get('protocol') || 'xrtc'
+
+// 事件日志，playwright 通过 window.__state 读取
+window.__state = {
+  protocol,
+  events: [],        // {t, name, data}
+  startResolved: null, // null=未结束 true=resolve false=reject
+  startResult: null,
+  startError: null,
+  writeTextResult: null
+}
+const log = (name, data) => {
+  const rec = { t: Date.now(), name, data: safe(data) }
+  window.__state.events.push(rec)
+  console.log('[EVT]', name, data === undefined ? '' : JSON.stringify(safe(data)))
+}
+const safe = v => {
+  try {
+    if (v instanceof Error) return { errorName: v.name, message: v.message, code: v.code, sid: v.sid, request_id: v.request_id }
+    return JSON.parse(JSON.stringify(v ?? null, (k, x) => typeof x === 'bigint' ? String(x) : x))
+  } catch { return String(v) }
+}
+
+const mod = await import('/sdk/avatar-sdk-web_3.2.3.1002/index.js')
+const AvatarPlatform = mod.default
+const SDKEvents = mod.SDKEvents
+const PlayerEvents = mod.PlayerEvents
+console.log('[TEST] SDK version:', AvatarPlatform.getVersion(), '| SDKEvents:', JSON.stringify(SDKEvents), '| PlayerEvents:', JSON.stringify(PlayerEvents))
+
+const platform = new AvatarPlatform()
+window.__platform = platform
+
+platform.setApiInfo({
+  serverUrl: 'wss://avatar.cn-huadong-1.xf-yun.com/v1/interact',
+  appId: 'f5d7b8f7',
+  apiKey: 'fd9cf69e48d14ae73c7d14ef9ef1a30d',
+  apiSecret: 'MWRjZWFmNDMxMmQ4ZDQxNzYxYTQ3NzQ0',
+  sceneId: '356356451834400768'
+})
+platform.setGlobalParams({
+  stream: { protocol },
+  avatar: { avatar_id: '111204004', width: 480, height: 854 },
+  tts: { vcn: 'x4_yiting' }
+})
+
+// 注册全部 SDK 事件
+for (const ev of Object.values(SDKEvents)) platform.on(ev, (...args) => log('sdk.' + ev, args.length > 1 ? args : args[0]))
+// 注册全部播放器事件（player 在构造时已创建）
+if (platform.player) {
+  for (const ev of Object.values(PlayerEvents)) platform.player.on(ev, (...args) => log('player.' + ev, args.length > 1 ? args : args[0]))
+} else {
+  log('test.no-player-at-construct')
+}
+
+const wrapper = document.getElementById('wrapper')
+console.log('[TEST] calling start(), protocol =', protocol)
+platform.start({ wrapper })
+  .then(result => {
+    window.__state.startResolved = true
+    window.__state.startResult = safe(result)
+    log('test.start-resolved', result)
+    // start 成功后 3 秒发文本驱动播报
+    setTimeout(() => {
+      try {
+        const rid = platform.writeText('你好，这是一条浏览器端播报测试。')
+        window.__state.writeTextResult = { ok: true, rid }
+        log('test.writeText-sent', { rid })
+      } catch (e) {
+        window.__state.writeTextResult = { ok: false, error: safe(e) }
+        log('test.writeText-error', e)
+      }
+    }, 3000)
+  })
+  .catch(err => {
+    window.__state.startResolved = false
+    window.__state.startError = safe(err)
+    log('test.start-rejected', err)
+  })
+
+// 供 playwright 调用：检查 wrapper 内 video 状态
+window.__inspect = () => {
+  const w = document.getElementById('wrapper')
+  const videos = [...w.querySelectorAll('video')]
+  return {
+    wrapperSize: { w: w.offsetWidth, h: w.offsetHeight },
+    wrapperHTMLLength: w.innerHTML.length,
+    childTags: [...w.querySelectorAll('*')].map(e => e.tagName.toLowerCase()).slice(0, 30),
+    videos: videos.map(v => ({
+      paused: v.paused,
+      muted: v.muted,
+      readyState: v.readyState,
+      videoWidth: v.videoWidth,
+      videoHeight: v.videoHeight,
+      currentTime: v.currentTime,
+      hasSrcObject: !!v.srcObject,
+      srcObjectActive: v.srcObject ? v.srcObject.active : null,
+      tracks: v.srcObject ? v.srcObject.getTracks().map(t => ({ kind: t.kind, readyState: t.readyState, muted: t.muted })) : [],
+      autoplay: v.autoplay,
+      styleDisplay: getComputedStyle(v).display,
+      rect: (r => ({ w: r.width, h: r.height }))(v.getBoundingClientRect())
+    }))
+  }
+}
+console.log('[TEST] page ready')
+</script>
+</body>
+</html>

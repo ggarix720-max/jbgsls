@@ -38,6 +38,9 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
           <MenuItem href='/knowledge' icon={<i className='ri-book-open-line' />}>
             课程资料
           </MenuItem>
+          <MenuItem href='/resources' icon={<i className='ri-compass-3-line' />}>
+            学习资源推荐
+          </MenuItem>
           <MenuItem href='/cases' icon={<i className='ri-pulse-line' />}>
             储粮案例分析
           </MenuItem>

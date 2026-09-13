@@ -80,12 +80,26 @@ services:
       args:
         BASEPATH: /agents
         NEXT_PUBLIC_BASE_PATH: /agents
+        # 数字人构建期变量（NEXT_PUBLIC_* 为构建期内联，运行时 environment 无效）。
+        # 可选覆盖：在根目录 .env 或 shell 环境中设置同名变量后随 --build 注入；
+        # 不设置则为空，前端回退到 avatar.config.ts 内默认值。
+        NEXT_PUBLIC_XF_AVATAR_SCENE_ID: ${NEXT_PUBLIC_XF_AVATAR_SCENE_ID:-}
+        NEXT_PUBLIC_XF_AVATAR_APP_ID: ${NEXT_PUBLIC_XF_AVATAR_APP_ID:-}
+        NEXT_PUBLIC_XF_AVATAR_API_KEY: ${NEXT_PUBLIC_XF_AVATAR_API_KEY:-}
+        NEXT_PUBLIC_XF_AVATAR_API_SECRET: ${NEXT_PUBLIC_XF_AVATAR_API_SECRET:-}
+        NEXT_PUBLIC_XF_AVATAR_SERVER_URL: ${NEXT_PUBLIC_XF_AVATAR_SERVER_URL:-}
+        NEXT_PUBLIC_XF_AVATAR_ID: ${NEXT_PUBLIC_XF_AVATAR_ID:-}
+        NEXT_PUBLIC_XF_AVATAR_VCN: ${NEXT_PUBLIC_XF_AVATAR_VCN:-}
+        NEXT_PUBLIC_XF_AVATAR_PROTOCOL: ${NEXT_PUBLIC_XF_AVATAR_PROTOCOL:-}
+        NEXT_PUBLIC_XF_AVATAR_LLM_CHANNEL: ${NEXT_PUBLIC_XF_AVATAR_LLM_CHANNEL:-}
+        NEXT_PUBLIC_XF_ASSISTANT_ID: ${NEXT_PUBLIC_XF_ASSISTANT_ID:-}
     environment:
       BASEPATH: /agents
       NEXT_PUBLIC_BASE_PATH: /agents
       WEBUI_BASE_URL: http://webui:8080
       GRAIN_API_BASE_URL: http://app:8000
       VECTOR_STORE_REPORT: /vector-store-base/download_report.json
+      RESOURCES_FILE: /resources-base/resources.json
     depends_on:
       app:
         condition: service_healthy
@@ -93,6 +107,7 @@ services:
         condition: service_healthy
     volumes:
       - ./vector_store/base/download_report.json:/vector-store-base/download_report.json:ro
+      - ./resources/resources.json:/resources-base/resources.json:ro
     healthcheck:
       test:
         - CMD

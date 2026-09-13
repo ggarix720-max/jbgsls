@@ -12,16 +12,22 @@
 import type { UserRole } from '@/types/grain'
 
 export type GrainUserProfile = {
+
   /** 角色（对应后端 Role 枚举） */
   role: UserRole
+
   /** 会话 ID（复用主聊天页的 grain-learning-session） */
   sessionId: string
+
   /** 累计提问次数 */
   questionCount: number
+
   /** 命中的关注方向（粮储领域关键词标签，按最近命中排序） */
   interests: string[]
+
   /** 最近提问（最多 5 条，最新在前） */
   recentQuestions: string[]
+
   /** 最近更新时间 */
   updatedAt: string
 }
@@ -177,6 +183,7 @@ export function buildProfileSummary(profile: GrainUserProfile): string {
 
   if (profile.questionCount > 0) parts.push(`历史提问次数：${profile.questionCount}`)
   if (profile.interests.length > 0) parts.push(`关注方向：${profile.interests.join('、')}`)
+
   if (profile.recentQuestions.length > 0) {
     parts.push(`最近提问：${profile.recentQuestions.slice(0, 3).join(' / ')}`)
   }
